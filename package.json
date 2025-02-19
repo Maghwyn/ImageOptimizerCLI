@@ -3,6 +3,8 @@
 	"version": "1.0.0",
 	"description": "Personal CLI tool to optimize and convert images in bulk for PNG, JPEG, WebP, and AVIF formats.",
 	"scripts": {
+		"optimize:folder": "tsx src/scripts/optimizeFolder.ts",
+		"optimize:image": "tsx src/scripts/optimizeImage.ts",
 		"lint": "eslint --fix"
 	},
 	"dependencies": {
