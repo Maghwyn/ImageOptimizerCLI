@@ -25,7 +25,6 @@ export const getAllFilesAndFoldersInside = async (
             files.push({
                 src: srcPath,
                 dest: destPath,
-                samePath: srcPath === destPath,
             });
         }
     }

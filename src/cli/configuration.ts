@@ -46,6 +46,7 @@ export const setupInputPath = async (
 
 export const setupOutputPath = async (
     useEnv: boolean,
+    srcPath: string,
     absPath: string | undefined,
 ) => {
     const newAbsPath = absPath ?? path.join(process.cwd(), 'output');
@@ -55,15 +56,24 @@ export const setupOutputPath = async (
             log.warn('Could not find OUTPUT_PATH in .env, using default');
         }
 
-        return newAbsPath;
+        if (srcPath === newAbsPath) {
+            log.warn('Ouput path must be different than the input path');
+        } else {
+            return newAbsPath;
+        }
     }
 
     const data = (await text({
         message: 'Enter the output path:',
         placeholder: defaultPlaceholder,
         initialValue: newAbsPath,
-        validate: (value) =>
-            value.trim() === '' ? 'Ouput path is required' : undefined,
+        validate: (value) => {
+            if (srcPath === value) {
+                return 'Ouput path must be different than the input path';
+            }
+
+            return value.trim() === '' ? 'Ouput path is required' : undefined;
+        },
     })) as string;
 
     if (isCancel(data)) CLIKill();

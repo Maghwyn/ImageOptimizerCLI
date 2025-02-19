@@ -93,7 +93,7 @@ const CLIConfigurationSetup = async (
         : (storedConfig?.QUALITY ?? 80);
 
     INPUT_PATH = await setupInputPath(useEnv, action, INPUT_PATH);
-    OUTPUT_PATH = await setupOutputPath(useEnv, OUTPUT_PATH);
+    OUTPUT_PATH = await setupOutputPath(useEnv, INPUT_PATH, OUTPUT_PATH);
     ISLOSSLESS = await setupIsLossless(useEnv, ISLOSSLESS);
     QUALITY = await setupQuality(useEnv, QUALITY);
 
