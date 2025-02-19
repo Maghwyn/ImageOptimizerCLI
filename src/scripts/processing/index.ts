@@ -81,6 +81,8 @@ export const processFolder = async (config: Configuration) => {
 
     await processFolderProgress(config, folders);
     const skippedFiles = await processFilesProgress(config, files);
+    console.log(); // Visual
+
     return files.length - skippedFiles;
 };
 

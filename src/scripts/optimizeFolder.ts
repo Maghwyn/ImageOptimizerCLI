@@ -4,6 +4,7 @@ import pc from 'picocolors';
 
 import config from '@/scripts/config';
 import { runningOptimisation } from '@/scripts/processing/run';
+import { getVisualConfig } from '@/scripts/utils';
 import { ACTION_OPTIONS } from '@/types/enum';
 
 (async () => {
@@ -16,7 +17,10 @@ import { ACTION_OPTIONS } from '@/types/enum';
         return;
     }
 
-    console.log(`Current configuration : ${EOL}`, config, EOL);
+    console.log(
+        pc.green(`Configuration loaded! Starting optimization... ${EOL}`),
+    );
+    console.log(`Current configuration :`, getVisualConfig(config));
     await runningOptimisation(config, ACTION_OPTIONS.FOLDER)
         .then(() => console.log(pc.green('Optimization complete!')))
         .catch((err) => console.error(pc.red(err)));

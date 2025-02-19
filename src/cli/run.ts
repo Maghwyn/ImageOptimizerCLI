@@ -1,5 +1,4 @@
 import path from 'path';
-import { EOL } from 'os'; // \n compatible for macOS and Window
 
 import dotenv from 'dotenv';
 import pc from 'picocolors';
@@ -16,6 +15,7 @@ import {
 import { CLIActionPick, CLIImageFormatPick } from '@/cli/select';
 import { CLIKill } from '@/cli/utils';
 import { runningOptimisation } from '@/scripts/processing/run';
+import { getVisualConfig } from '@/scripts/utils';
 
 dotenv.config();
 
@@ -102,16 +102,7 @@ const CLIConfigurationSetup = async (
 
 const CLIPreOptiConfirm = async (config: Configuration) => {
     const confirmed = await confirm({
-        message:
-            'Confirm configuration:' +
-            `${EOL}${EOL}Paths :` +
-            `${EOL}${pc.cyan(`Input: ${config.INPUT_PATH}`)}` +
-            `${EOL}${pc.green(`Output: ${config.OUTPUT_PATH}`)}` +
-            `${EOL}${EOL}Optimisation :` +
-            `${EOL}${pc.magenta(`Format: ${config.FORMAT}`)}` +
-            `${EOL}${pc.magenta(`Lossless: ${config.ISLOSSLESS ? 'Yes' : 'No'}`)}` +
-            `${EOL}${pc.magenta(`Quality: ${config.QUALITY}`)}` +
-            `${EOL}`,
+        message: 'Confirm configuration:' + getVisualConfig(config),
     });
 
     if (isCancel(confirmed)) CLIKill();
