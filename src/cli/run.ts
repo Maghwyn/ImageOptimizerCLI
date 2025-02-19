@@ -80,15 +80,17 @@ const CLIConfigurationSetup = async (
     action: ACTION_OPTIONS,
 ) => {
     let INPUT_PATH = useEnv
-        ? process.env.INPUT_PATH
+        ? process.env.INPUT_PATH?.trim()
         : (storedConfig?.INPUT_PATH ?? '');
     let OUTPUT_PATH = useEnv
-        ? process.env.OUTPUT_PATH
+        ? process.env.OUTPUT_PATH?.trim()
         : (storedConfig?.OUTPUT_PATH ?? path.join(process.cwd(), 'output'));
     let ISLOSSLESS = useEnv
-        ? process.env.ISLOSSLESS
+        ? process.env.ISLOSSLESS?.trim()
         : (storedConfig?.ISLOSSLESS ?? false);
-    let QUALITY = useEnv ? process.env.QUALITY : (storedConfig?.QUALITY ?? 80);
+    let QUALITY = useEnv
+        ? process.env.QUALITY?.trim()
+        : (storedConfig?.QUALITY ?? 80);
 
     INPUT_PATH = await setupInputPath(useEnv, action, INPUT_PATH);
     OUTPUT_PATH = await setupOutputPath(useEnv, OUTPUT_PATH);
