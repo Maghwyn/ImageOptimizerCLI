@@ -2,7 +2,9 @@
 	"name": "image-optimizer-cli",
 	"version": "1.0.0",
 	"description": "Personal CLI tool to optimize and convert images in bulk for PNG, JPEG, WebP, and AVIF formats.",
+	"main": "src/cli/run.ts",
 	"scripts": {
+		"cli": "tsx src/cli/run.ts",
 		"optimize:folder": "tsx src/scripts/optimizeFolder.ts",
 		"optimize:image": "tsx src/scripts/optimizeImage.ts",
 		"lint": "eslint --fix"
