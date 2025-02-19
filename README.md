@@ -13,16 +13,16 @@ pnpm install
 
 ### Interactive CLI
 ```bash
-npm run cli
+pnpm run cli
 ```
 
 ### Direct Scripts
 ```bash
 # Process folder
-npm run optimize:folder
+pnpm run optimize:folder
 
 # Process single image
-npm run optimize:image
+pnpm run optimize:image
 ```
 
 ## Configuration
