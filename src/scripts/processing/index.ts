@@ -60,7 +60,7 @@ const processFilesProgress = async (
         if (validExtensions.has(ext)) {
             await optimizeImage(absPath.src, absPath.dest, config);
         } else {
-            await fs.copyFile(absPath.src, absPath.dest);
+            if (!absPath.samePath) await fs.copyFile(absPath.src, absPath.dest);
             skippedFiles++;
         }
 

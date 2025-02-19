@@ -22,7 +22,11 @@ export const getAllFilesAndFoldersInside = async (
             folders.push(...nested.folders);
             files.push(...nested.files);
         } else {
-            files.push({ src: srcPath, dest: destPath });
+            files.push({
+                src: srcPath,
+                dest: destPath,
+                samePath: srcPath === destPath,
+            });
         }
     }
 

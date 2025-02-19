@@ -13,4 +13,5 @@ export interface Configuration {
 export interface FilePath {
     src: string;
     dest: string;
+    samePath: boolean;
 }
